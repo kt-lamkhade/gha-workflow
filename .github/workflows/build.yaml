@@ -21,4 +21,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: kiran2275/demo-nginx:latest
+          tags: kiran2275/demo-nginx:latest,kiran2275/demo-nginx:${{ github.sha }}
