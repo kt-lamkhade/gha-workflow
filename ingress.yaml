@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kiran-ingress
+  namespace: kiran
+  annotations:
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+spec:
+  ingressClassName: alb
+  rules:
+  - http:
+      paths:
+      - path: /nginxapp
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
+      - path: /caddyapp
+        pathType: Prefix
+        backend:
+          service:
+            name: caddy-service
+            port:
+              number: 80
